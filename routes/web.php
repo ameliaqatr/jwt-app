@@ -16,3 +16,23 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+//register
+$router->group([
+    'prefix' => 'auth',
+], function () use ($router){
+    $router->post('/register', 'UserController@register');
+});
+
+//login
+$router->post('/login', 'UserController@login');
+
+//logout
+$router->get('/logout', 'UserController@logout');
+
+//me melihat pengguna yg sedang login
+$router->get('/me', 'UserController@me');
+
+//index list pengguna
+$router->get('/user', 'UserController@index');
+
